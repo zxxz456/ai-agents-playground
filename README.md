@@ -132,15 +132,72 @@ Proyecto integrador. *En progreso.*
 
 ---
 
+## Configuración de Ollama (modelos locales)
+
+**Ollama** permite ejecutar LLMs **localmente** sin depender de APIs en la nube. Descarga, gestiona y sirve modelos open-source a través de una API local.
+
+### Instalación
+
+```bash
+# Instalar Ollama
+curl -fsSL https://ollama.com/install.sh | sh
+
+# Verificar la instalación
+ollama --version
+
+# Comprobar que el servicio está corriendo
+systemctl status ollama
+
+# Ver logs en tiempo real (útil para debug)
+journalctl -u ollama -f
+```
+
+### Modelos utilizados
+
+```bash
+ollama pull gemma4:31b
+ollama pull gemma4:26b
+ollama pull qwen3-coder:30b
+ollama pull qwen3.5:9b
+ollama pull qwen3-embedding:4b
+
+# Ver modelos descargados
+ollama list
+
+# Probar un modelo interactivamente
+ollama run gemma4:31b
+```
+
+| Modelo | Params | Uso principal |
+|--------|--------|---------------|
+| `gemma4:31b` | 31B | Texto general, alta calidad (Google) |
+| `gemma4:26b` | 26B | Texto general, balance calidad/velocidad (Google) |
+| `qwen3-coder:30b` | 30B | Generación y análisis de código (Alibaba) |
+| `qwen3.5:9b` | 9B | Tareas ligeras, respuestas rápidas (Alibaba) |
+| `qwen3-embedding:4b` | 4B | Embeddings para búsqueda semántica y RAG (Alibaba) |
+
+---
+
 ## Stack Tecnológico
 
 | Categoría | Tecnologías |
 |-----------|-------------|
-| **LLM** | Anthropic Claude API (Sonnet, Haiku) |
-| **Python** | `anthropic`, `asyncio`, `pydantic`, `httpx` |
+| **LLM Cloud** | Anthropic Claude API (Sonnet, Haiku) |
+| **LLM Local** | Ollama (Gemma 4, Qwen 3/3.5) |
+| **Python** | `anthropic`, `ollama`, `asyncio`, `pydantic`, `httpx` |
 | **Base de Datos** | PostgreSQL + PostGIS, `asyncpg`, `sqlparse` |
 | **APIs externas** | Open-Meteo (clima), GitHub API |
 | **Otros** | `zoneinfo`, streaming, AST parsing |
+
+## Hardware
+
+| Componente | Especificación |
+|------------|----------------|
+| **CPU** | AMD Ryzen 7 9800X3D |
+| **RAM** | 32 GB DDR5 |
+| **GPU** | NVIDIA 5060 Ti 16 GB VRAM GDDR7 |
+
+---
 
 ## Patrones Clave
 
