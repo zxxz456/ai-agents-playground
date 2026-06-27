@@ -1,6 +1,5 @@
 # AI Agents Playground
 
-
 Repositorio de aprendizaje práctico sobre **agentes de IA** con la API de Claude (Anthropic). Cubre desde los fundamentos de la API hasta patrones avanzados como RAG, sistemas multiagente y MCP.
 
 > Gran parte del material está basado en los cursos oficiales de Anthropic: [https://github.com/anthropics/courses](https://github.com/anthropics/courses)
